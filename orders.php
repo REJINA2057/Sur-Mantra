@@ -85,8 +85,9 @@ if($_GET['o'] == 'add') {
 			  <table class="table" id="productTable">
 			  	<thead>
 			  		<tr>			  			
-			  			<th style="width:40%;">Product</th>
+			  			<th style="width:25%;">Product</th>
 			  			<th style="width:20%;">Rate</th>
+			  			<th style="width:20%;">Retail Price</th>	
 			  			<th style="width:10%;">Available Quantity</th>
 			  			<th style="width:15%;">Quantity</th>			  			
 			  			<th style="width:25%;">Total</th>			  			
@@ -119,14 +120,21 @@ if($_GET['o'] == 'add') {
 			  					<input type="text" name="rate[]" id="rate<?php echo $x; ?>" autocomplete="off" disabled="true" class="form-control" />			  					
 			  					<input type="hidden" name="rateValue[]" id="rateValue<?php echo $x; ?>" autocomplete="off" class="form-control" />			  					
 			  				</td>
-							<td style="padding-left:20px;">
+
+								<td style="padding-left:20px;">
+			  					<div class="form-group">
+			  					<input type="text" name="retailPrice[]" id="retailPrice<?php echo $x; ?>"  autocomplete="off" class="form-control"  />
+			  					</div>
+			  				</td>
+
+							<td style="padding-left:30px;">
 			  					<div class="form-group">
 									<p id="available_quantity<?php echo $x; ?>"></p>
 			  					</div>
 			  				</td>
 			  				<td style="padding-left:20px;">
 			  					<div class="form-group">
-			  					<input type="number" name="quantity[]" id="quantity<?php echo $x; ?>" onkeyup="getTotal(<?php echo $x ?>)" autocomplete="off" class="form-control" min="1" />
+			  					<input type="number" name="quantity[]" id="quantity<?php echo $x; ?>"  onchange="getTotal(<?php echo $x ?>)" autocomplete="off" class="form-control" />
 			  					</div>
 			  				</td>
 			  				<td style="padding-left:20px;">			  					
@@ -224,8 +232,8 @@ if($_GET['o'] == 'add') {
 				    <div class="col-sm-9">
 				      <select class="form-control" name="paymentPlace" id="paymentPlace">
 				      	<option value="">~~SELECT~~</option>
-				      	<option value="1">In Gujarat</option>
-				      	<option value="2">Out Of Gujarat</option>
+				      	<option value="1">In Kathmandu</option>
+				      	<option value="2">Out Of Kathmandu</option>
 				      </select>
 				    </div>
 				  </div> <!--/form-group-->							  
@@ -350,7 +358,7 @@ if($_GET['o'] == 'add') {
 			  					</div>
 			  				</td>
 			  				<td style="padding-left:20px;">			  					
-			  					<input type="text" name="rate[]" id="rate<?php echo $x; ?>" autocomplete="off" disabled="true" class="form-control" value="<?php echo $orderItemData['rate']; ?>" />			  					
+			  					<input type="text" name="rate[]" id="rate<?php echo $x; ?>" autocomplete="off" disabled="" class="form-control" value="<?php echo $orderItemData['rate']; ?>" />			  					
 			  					<input type="hidden" name="rateValue[]" id="rateValue<?php echo $x; ?>" autocomplete="off" class="form-control" value="<?php echo $orderItemData['rate']; ?>" />			  					
 			  				</td>
 							<td style="padding-left:20px;">
@@ -571,9 +579,10 @@ if($_GET['o'] == 'add') {
 			      	<option value="1">Full Payment</option>
 			      	<option value="2">Advance Payment</option>
 			      	<option value="3">No Payment</option>
+							<option value="4">On Credit</option>
 			      </select>
 			    </div>
-			  </div> <!--/form-group-->							  				  
+			  </div> /form-group							  				  
       	        
       </div> <!--/modal-body-->
       <div class="modal-footer">

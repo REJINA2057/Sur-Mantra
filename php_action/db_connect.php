@@ -2,8 +2,8 @@
 
 $localhost = "localhost";
 $username = "root";
-$password = "root";
-$dbname = "store";
+$password = "";
+$dbname = "ims";
 $store_url = "http://localhost/php-inventory-management-system/";
 // db connection
 $connect = new mysqli($localhost, $username, $password, $dbname);

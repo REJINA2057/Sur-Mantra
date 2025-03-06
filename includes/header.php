@@ -46,9 +46,10 @@
         <span class="icon-bar"></span>
       </button>
       <!-- <a class="navbar-brand" href="#">Brand</a> -->
-	  <a class="navbar-brand" href="#" style="padding:0px;">
-                    <img src="logo.png" alt="">
-                </a>
+      <a class="navbar-brand" href="#" style="padding: 5px 15px; display: flex; align-items: center;">
+        <img src="logo.png" alt="Logo" style="height: 50px; width: auto;">
+      </a>
+
     </div>
 
     <!-- Collect the nav links, forms, and other content for toggling -->

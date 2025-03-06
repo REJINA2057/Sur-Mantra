@@ -23,7 +23,7 @@ $payment_place = $orderData[10];
 $gstn = $orderData[11];
 
 
-$orderItemSql = "SELECT order_item.product_id, order_item.rate, order_item.quantity, order_item.total,
+$orderItemSql = "SELECT order_item.product_id, order_item.retail_price, order_item.quantity, order_item.total,
 product.product_name FROM order_item
    INNER JOIN product ON order_item.product_id = product.product_id 
  WHERE order_item.order_id = $orderId";

@@ -51,8 +51,8 @@ if($_POST) {
 				$connect->query($updateProductTable);
 
 				// add into order_item
-				$orderItemSql = "INSERT INTO order_item (order_id, product_id, quantity, rate, total, order_item_status) 
-				VALUES ('$order_id', '".$_POST['productName'][$x]."', '".$_POST['quantity'][$x]."', '".$_POST['rateValue'][$x]."', '".$_POST['totalValue'][$x]."', 1)";
+				$orderItemSql = "INSERT INTO order_item (order_id, product_id, quantity, rate, retail_price,total, order_item_status) 
+				VALUES ('$order_id', '".$_POST['productName'][$x]."', '".$_POST['quantity'][$x]."', '".$_POST['rateValue'][$x]."','".$_POST['retailPrice'][$x]."', '".$_POST['totalValue'][$x]."', 1)";
 
 				$connect->query($orderItemSql);		
 

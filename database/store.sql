@@ -82,8 +82,9 @@ CREATE TABLE `order_item` (
   `order_item_id` int(11) NOT NULL,
   `order_id` int(11) NOT NULL DEFAULT '0',
   `product_id` int(11) NOT NULL DEFAULT '0',
-  `quantity` varchar(255) NOT NULL,
   `rate` varchar(255) NOT NULL,
+  `quantity` varchar(255) NOT NULL,
+  `retail_price` varchar(255) NOT NULL, 
   `total` varchar(255) NOT NULL,
   `order_item_status` int(11) NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
