@@ -504,10 +504,10 @@ if($_GET['o'] == 'add') {
 				      	<option value="">~~SELECT~~</option>
 				      	<option value="1" <?php if($data[13] == 1) {
 				      		echo "selected";
-				      	} ?>  >In Gujarat</option>
+				      	} ?>  >In Kathmandu</option>
 				      	<option value="2" <?php if($data[13] == 2) {
 				      		echo "selected";
-				      	} ?> >Out Gujarat</option>
+				      	} ?> >Out Kathmandu</option>
 				      </select>
 				    </div>
 				  </div>							  
