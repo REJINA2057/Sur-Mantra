@@ -183,7 +183,7 @@ if($_GET['o'] == 'add') {
 				    </div>
 				  </div> <!--/form-group-->	
 				  <div class="form-group">
-				    <label for="vat" class="col-sm-3 control-label gst">GST 18%</label>
+				    <label for="vat" class="col-sm-3 control-label gst">VAT 13%</label>
 				    <div class="col-sm-9">
 				      <input type="text" class="form-control" id="vat" name="gstn" readonly="true" />
 				      <input type="hidden" class="form-control" id="vatValue" name="vatValue" />
@@ -313,6 +313,7 @@ if($_GET['o'] == 'add') {
 			  		<tr>			  			
 			  			<th style="width:40%;">Product</th>
 			  			<th style="width:20%;">Rate</th>
+							<th style="width:20%;">Retail Price</th>	
 			  			<th style="width:15%;">Available Quantity</th>			  			
 			  			<th style="width:15%;">Quantity</th>			  			
 			  			<th style="width:15%;">Total</th>			  			
