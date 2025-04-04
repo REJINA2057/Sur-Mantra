@@ -103,8 +103,23 @@ CREATE TABLE `product` (
   `categories_id` int(11) NOT NULL,
   `quantity` varchar(255) NOT NULL,
   `rate` varchar(255) NOT NULL,
+  `supplier_id` int(11) NOT NULL,
   `active` int(11) NOT NULL DEFAULT '0',
   `status` int(11) NOT NULL DEFAULT '0'
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `suppliers`
+--
+
+CREATE TABLE `supplier` (
+  `supplier_id` int(11) NOT NULL,
+  `supplier_name` varchar(255) NOT NULL,
+  `rate` varchar(255) NOT NULL,
+  `active` int(11) NOT NULL DEFAULT '0',
+  `supplier_status` int(11) NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -136,6 +151,12 @@ INSERT INTO `users` (`user_id`, `username`, `password`, `email`) VALUES
 --
 ALTER TABLE `brands`
   ADD PRIMARY KEY (`brand_id`);
+
+--
+-- Indexes for table `supplier`
+--
+ALTER TABLE `supplier`
+  ADD PRIMARY KEY (`supplier_id`);
 
 --
 -- Indexes for table `categories`
@@ -176,6 +197,12 @@ ALTER TABLE `users`
 --
 ALTER TABLE `brands`
   MODIFY `brand_id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `supplier`
+--
+ALTER TABLE `supplier`
+  MODIFY `supplier_id` int(11) NOT NULL AUTO_INCREMENT;  
 --
 -- AUTO_INCREMENT for table `categories`
 --

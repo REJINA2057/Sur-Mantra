@@ -43,6 +43,7 @@ $(document).ready(function() {
 			var productImage = $("#productImage").val();
 			var productName = $("#productName").val();
 			var quantity = $("#quantity").val();
+			var supplierName = $("#supplierName").val();
 			var rate = $("#rate").val();
 			var brandName = $("#brandName").val();
 			var categoryName = $("#categoryName").val();
@@ -66,6 +67,16 @@ $(document).ready(function() {
 				$("#productName").find('.text-danger').remove();
 				// success out for form 
 				$("#productName").closest('.form-group').addClass('has-success');	  	
+			}	// /else
+
+			if(supplierName == "") {
+				$("#supplierName").after('<p class="text-danger">Supplier Name field is required</p>');
+				$('#supplierName').closest('.form-group').addClass('has-error');
+			}	else {
+				// remov error text field
+				$("#supplierName").find('.text-danger').remove();
+				// success out for form 
+				$("#supplierName").closest('.form-group').addClass('has-success');	  	
 			}	// /else
 
 			if(quantity == "") {
@@ -118,7 +129,7 @@ $(document).ready(function() {
 				$("#productStatus").closest('.form-group').addClass('has-success');	  	
 			}	// /else
 
-			if(productImage && productName && quantity && rate && brandName && categoryName && productStatus) {
+			if(productImage && productName && quantity && supplierName && rate && brandName && categoryName && productStatus) { 
 				// submit loading button
 				$("#createProductBtn").button('loading');
 

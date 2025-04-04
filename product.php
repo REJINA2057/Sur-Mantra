@@ -26,6 +26,7 @@
 						<tr>
 							<th style="width:10%;">Photo</th>							
 							<th>Product Name</th>
+							<th>Supplier Name</th>
 							<th>Rate</th>							
 							<th>Quantity</th>
 							<th>Brand</th>
@@ -77,7 +78,34 @@
 				    <div class="col-sm-8">
 				      <input type="text" class="form-control" id="productName" placeholder="Product Name" name="productName" autocomplete="off">
 				    </div>
-	        </div> <!-- /form-group-->	    
+	        </div> <!-- /form-group-->
+
+					<div class="form-group">
+	        	<label for="supplierName" class="col-sm-3 control-label">Supplier Name: </label>
+	        	<label class="col-sm-1 control-label">: </label>
+				    <div class="col-sm-8">
+				      <select class="form-control" id="supplierName" name="supplierName">
+				      	<option value="">~~SELECT~~</option>
+				      	<?php 
+				      	$sql = "SELECT supplier_id, supplier_name, rate, active,supplier_status FROM supplier WHERE supplier_status = 1 AND active = 1";
+								$result = $connect->query($sql);
+
+								while($row = $result->fetch_array()) {
+									echo "<option value='".$row[0]."'>".$row[1]."</option>";
+								} // while
+								
+				      	?>
+				      </select>
+				    </div>
+	        </div>
+					
+					<!-- <div class="form-group">
+	        	<label for="supplierName" class="col-sm-3 control-label">Supplier Name: </label>
+	        	<label class="col-sm-1 control-label">: </label>
+				    <div class="col-sm-8">
+				      <input type="text" class="form-control" id="productName" placeholder="Supplier Name" name="supplierName" autocomplete="off">
+				    </div>
+	        </div> -->
 
 	        <div class="form-group">
 	        	<label for="quantity" class="col-sm-3 control-label">Quantity: </label>
@@ -85,7 +113,26 @@
 				    <div class="col-sm-8">
 				      <input type="text" class="form-control" id="quantity" placeholder="Quantity" name="quantity" autocomplete="off">
 				    </div>
-	        </div> <!-- /form-group-->	        	 
+	        </div> <!-- /form-group-->	  
+					
+					<!-- <div class="form-group">
+	        	<label for="rate" class="col-sm-3 control-label">Rate: </label>
+	        	<label class="col-sm-1 control-label">: </label>
+				    <div class="col-sm-8">
+				      <select class="form-control" id="rate" name="rate">
+				      	<option value="">~~SELECT~~</option>
+				      	<?php 
+				      	$sql = "SELECT supplier_id,rate, active,supplier_status FROM supplier WHERE supplier_status = 1 AND active = 1";
+								$result = $connect->query($sql);
+
+								while($row = $result->fetch_array()) {
+									echo "<option value='".$row[0]."'>".$row[1]."</option>";
+								} // while
+								
+				      	?>
+				      </select>
+				    </div>
+	        </div> -->
 
 	        <div class="form-group">
 	        	<label for="rate" class="col-sm-3 control-label">Rate: </label>
