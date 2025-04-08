@@ -88,7 +88,7 @@ $(document).ready(function() {
 });
 
 function editBrands(supplierId = null) {
-	if(suppierId) {
+	if(supplierId) {
 		// remove hidden brand id text
 		$('#suppierId').remove();
 
@@ -105,9 +105,9 @@ function editBrands(supplierId = null) {
 		$('.editBrandFooter').addClass('div-hide');
 
 		$.ajax({
-			url: 'php_action/fetchSelectedBrand.php',
+			url: 'php_action/fetchSelectedSupplier.php',
 			type: 'post',
-			data: {suppierId : suppierId},
+			data: {supplierId : supplierId},
 			dataType: 'json',
 			success:function(response) {
 				// modal loading
@@ -118,11 +118,11 @@ function editBrands(supplierId = null) {
 				$('.editBrandFooter').removeClass('div-hide');
 
 				// setting the brand name value 
-				$('#editSupplierName').val(response.brand_name);
+				$('#editSupplierName').val(response.supplier_name);
 				// setting the brand status value
-				$('#editSupplierStatus').val(response.brand_active);
+				$('#editSupplierStatus').val(response.active);
 				// brand id 
-				$(".editBrandFooter").after('<input type="hidden" name="supplierId" id="supplierId" value="'+response.brand_id+'" />');
+				$(".editBrandFooter").after('<input type="hidden" name="supplierId" id="supplierId" value="'+response.supplier_id+'" />');
 
 				// update brand form 
 				$('#editSupplierForm').unbind('submit').bind('submit', function() {
@@ -136,7 +136,7 @@ function editBrands(supplierId = null) {
 					var supplierStatus = $('#editSupplierStatus').val();
 
 					if(supplierName == "") {
-						$("#editSupplierName").after('<p class="text-danger">Brand Name field is required</p>');
+						$("#editSupplierName").after('<p class="text-danger">Supplier Name field is required</p>');
 						$('#editSupplierName').closest('.form-group').addClass('has-error');
 					} else {
 						// remov error text field
@@ -146,7 +146,7 @@ function editBrands(supplierId = null) {
 					}
 
 					if(supplierStatus == "") {
-						$("#editSupplierStatus").after('<p class="text-danger">Brand Name field is required</p>');
+						$("#editSupplierStatus").after('<p class="text-danger">Supplier Status field is required</p>');
 
 						$('#editSupplierStatus').closest('.form-group').addClass('has-error');
 					} else {
@@ -212,7 +212,7 @@ function removeSupplier(supplierId = null) {
 	if(supplierId) {
 		$('#removeSupplierId').remove();
 		$.ajax({
-			url: 'php_action/fetchSelectedBrand.php',
+			url: 'php_action/fetchSelectedSupplier.php',
 			type: 'post',
 			data: {supplierId : supplierId},
 			dataType: 'json',
