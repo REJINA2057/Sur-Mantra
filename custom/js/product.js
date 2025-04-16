@@ -120,10 +120,13 @@ $(document).ready(function() {
 
 			if(productName && quantity && supplierName && rate && brandName && categoryName && productStatus) { 
 				// submit loading button
+				
 				$("#createProductBtn").button('loading');
 
 				var form = $(this);
+				
 				var formData = new FormData(this);
+				
 
 				$.ajax({
 					url : form.attr('action'),
@@ -134,9 +137,10 @@ $(document).ready(function() {
 					contentType: false,
 					processData: false,
 					success:function(response) {
-						console.log("Image uploaded to: ", response.debug);
+						
 
-						if(response.success == true) {
+						if(response.success == true) {	
+							
 							// submit loading button
 							$("#createProductBtn").button('reset');
 							

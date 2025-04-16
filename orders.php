@@ -92,6 +92,7 @@ if($_GET['o'] == 'add') {
 			  			<th style="width:15%;">Quantity</th>			  			
 			  			<th style="width:25%;">Total</th>			  			
 			  			<th style="width:10%;"></th>
+						  <th style="width:10%;"></th>
 			  		</tr>
 			  	</thead>
 			  	<tbody>
@@ -145,6 +146,9 @@ if($_GET['o'] == 'add') {
 
 			  					<button class="btn btn-default removeProductRowBtn" type="button" id="removeProductRowBtn" onclick="removeProductRow(<?php echo $x; ?>)"><i class="glyphicon glyphicon-trash"></i></button>
 			  				</td>
+							  <td>
+							<button type="button" class="btn btn-default" onclick="addRow()" id="addRowBtn" data-loading-text="Loading..."> <i class="glyphicon glyphicon-plus-sign"></i> Add Row </button>
+							</td>
 			  			</tr>
 		  			<?php
 		  			$arrayNumber++;
@@ -242,8 +246,7 @@ if($_GET['o'] == 'add') {
 
 			  <div class="form-group submitButtonFooter">
 			    <div class="col-sm-offset-2 col-sm-10">
-			    <button type="button" class="btn btn-default" onclick="addRow()" id="addRowBtn" data-loading-text="Loading..."> <i class="glyphicon glyphicon-plus-sign"></i> Add Row </button>
-
+			    
 			      <button type="submit" id="createOrderBtn" data-loading-text="Loading..." class="btn btn-success"><i class="glyphicon glyphicon-ok-sign"></i> Save Changes</button>
 
 			      <button type="reset" class="btn btn-default" onclick="resetOrderForm()"><i class="glyphicon glyphicon-erase"></i> Reset</button>
@@ -318,6 +321,8 @@ if($_GET['o'] == 'add') {
 			  			<th style="width:15%;">Quantity</th>			  			
 			  			<th style="width:15%;">Total</th>			  			
 			  			<th style="width:10%;"></th>
+						 <th style="width:10%;"></th> 
+						
 			  		</tr>
 			  	</thead>
 			  	<tbody>
@@ -397,7 +402,11 @@ if($_GET['o'] == 'add') {
 
 			  					<button class="btn btn-default removeProductRowBtn" type="button" id="removeProductRowBtn" onclick="removeProductRow(<?php echo $x; ?>)"><i class="glyphicon glyphicon-trash"></i></button>
 			  				</td>
+							<td>
+							<button type="button" class="btn btn-default" onclick="addRow()" id="addRowBtn" data-loading-text="Loading..."> <i class="glyphicon glyphicon-plus-sign"></i> Add Row </button>
+							</td>
 			  			</tr>
+						
 		  			<?php
 		  			$arrayNumber++;
 		  			$x++;
