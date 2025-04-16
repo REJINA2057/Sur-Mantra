@@ -40,7 +40,6 @@ $(document).ready(function() {
 		$("#submitProductForm").unbind('submit').bind('submit', function() {
 
 			// form validation
-			var productImage = $("#productImage").val();
 			var productName = $("#productName").val();
 			var quantity = $("#quantity").val();
 			var supplierName = $("#supplierName").val();
@@ -49,16 +48,6 @@ $(document).ready(function() {
 			var categoryName = $("#categoryName").val();
 			var productStatus = $("#productStatus").val();
 	
-			if(productImage == "") {
-				$("#productImage").closest('.center-block').after('<p class="text-danger">Product Image field is required</p>');
-				$('#productImage').closest('.form-group').addClass('has-error');
-			}	else {
-				// remov error text field
-				$("#productImage").find('.text-danger').remove();
-				// success out for form 
-				$("#productImage").closest('.form-group').addClass('has-success');	  	
-			}	// /else
-
 			if(productName == "") {
 				$("#productName").after('<p class="text-danger">Product Name field is required</p>');
 				$('#productName').closest('.form-group').addClass('has-error');
@@ -129,7 +118,7 @@ $(document).ready(function() {
 				$("#productStatus").closest('.form-group').addClass('has-success');	  	
 			}	// /else
 
-			if(productImage && productName && quantity && supplierName && rate && brandName && categoryName && productStatus) { 
+			if(productName && quantity && supplierName && rate && brandName && categoryName && productStatus) { 
 				// submit loading button
 				$("#createProductBtn").button('loading');
 
@@ -145,6 +134,7 @@ $(document).ready(function() {
 					contentType: false,
 					processData: false,
 					success:function(response) {
+						console.log("Image uploaded to: ", response.debug);
 
 						if(response.success == true) {
 							// submit loading button

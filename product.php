@@ -65,7 +65,8 @@
 				    <div class="col-sm-8">
 					    <!-- the avatar markup -->
 							<div id="kv-avatar-errors-1" class="center-block" style="display:none;"></div>							
-					    <div class="kv-avatar center-block">					        
+					    <div class="kv-avatar center-block">			
+									<input type="hidden" name="defaultImage" value="Not Selected" />		        
 					        <input type="file" class="form-control" id="productImage" placeholder="Product Name" name="productImage" class="file-loading" style="width:auto;"/>
 					    </div>
 				      
