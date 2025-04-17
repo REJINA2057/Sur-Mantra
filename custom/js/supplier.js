@@ -1,11 +1,11 @@
-var manageBrandTable;
+var manageSupplierTable;
 
 $(document).ready(function() {
 	// top bar active
 	$('#navSupplier').addClass('active');
 	
 	// manage brand table
-	manageBrandTable = $("#manageBrandTable").DataTable({
+	manageSupplierTable = $("#manageSupplierTable").DataTable({
 		'ajax': 'php_action/fetchSupplier.php',
 		'order': []		
 	});
@@ -19,6 +19,8 @@ $(document).ready(function() {
 
 		var supplierName = $("#supplierName").val();
 		var supplierStatus = $("#supplierStatus").val();
+		var supplierPhone = $("#supplierPhone").val();
+		var supplierAddress = $("#supplierAddress").val();
 
 		if(supplierName == "") {
 			$("#supplierName").after('<p class="text-danger">Supplier Name field is required</p>');
@@ -30,6 +32,25 @@ $(document).ready(function() {
 			$("#supplierName").closest('.form-group').addClass('has-success');	  	
 		}
 
+		if(supplierPhone == "") {
+			$("#supplierPhone").after('<p class="text-danger">Supplier Phone field is required</p>');
+			$('#supplierPhone').closest('.form-group').addClass('has-error');
+		} else {
+			// remov error text field
+			$("#supplierPhone").find('.text-danger').remove();
+			// success out for form 
+			$("#supplierPhone").closest('.form-group').addClass('has-success');	  	
+		}
+
+		if(supplierAddress == "") {
+			$("#supplierAddress").after('<p class="text-danger">Supplier Address field is required</p>');
+			$('#supplierAddress').closest('.form-group').addClass('has-error');
+		} else {
+			// remov error text field
+			$("#supplierAddress").find('.text-danger').remove();
+			// success out for form 
+			$("#supplierAddress").closest('.form-group').addClass('has-success');	  	
+		}
 		if(supplierStatus == "") {
 			$("#supplierStatus").after('<p class="text-danger">Supplier Status is required</p>');
 
@@ -41,7 +62,7 @@ $(document).ready(function() {
 			$("#supplierStatus").closest('.form-group').addClass('has-success');	  	
 		}
 
-		if(supplierName && supplierStatus) {
+		if(supplierPhone && supplierName && supplierAddress &&supplierStatus) {
 			var form = $(this);
 			// button loading
 			$("#createSupplierBtn").button('loading');
@@ -57,7 +78,7 @@ $(document).ready(function() {
 
 					if(response.success == true) {
 						// reload the manage member table 
-						manageBrandTable.ajax.reload(null, false);						
+						manageSupplierTable.ajax.reload(null, false);						
 
   	  			// reset the form text
 						$("#submitSupplierForm")[0].reset();
@@ -117,10 +138,14 @@ function editBrands(supplierId = null) {
 				// modal footer
 				$('.editBrandFooter').removeClass('div-hide');
 
-				// setting the brand name value 
+				// setting the supplier name value 
 				$('#editSupplierName').val(response.supplier_name);
-				// setting the brand status value
-				$('#editSupplierStatus').val(response.active);
+				// setting the supplier status value
+				$('#editSupplierStatus').val(response.supplier_active);
+				// setting the supplier phone value
+				$('#editSupplierPhone').val(response.phone_no);
+				// setting the supplier address value
+				$('#editSupplierAddress').val(response.supplier_address);
 				// brand id 
 				$(".editBrandFooter").after('<input type="hidden" name="supplierId" id="supplierId" value="'+response.supplier_id+'" />');
 
@@ -133,7 +158,8 @@ function editBrands(supplierId = null) {
 					$('.form-group').removeClass('has-error').removeClass('has-success');			
 
 					var supplierName = $('#editSupplierName').val();
-					var supplierStatus = $('#editSupplierStatus').val();
+					var supplierStatus = $('#editSupplierStatus').val();var supplierPhone =  $('#editSupplierPhone').val();
+					var supplierAddress = $('#editSupplierAddress').val();
 
 					if(supplierName == "") {
 						$("#editSupplierName").after('<p class="text-danger">Supplier Name field is required</p>');
@@ -143,6 +169,26 @@ function editBrands(supplierId = null) {
 						$("#editSupplierName").find('.text-danger').remove();
 						// success out for form 
 						$("#editSupplierName").closest('.form-group').addClass('has-success');	  	
+					}
+
+					if(supplierPhone == "") {
+						$("#editSupplierPhone").after('<p class="text-danger">Supplier Name field is required</p>');
+						$('#editSupplierPhone').closest('.form-group').addClass('has-error');
+					} else {
+						// remov error text field
+						$("#editSupplierPhone").find('.text-danger').remove();
+						// success out for form 
+						$("#editSupplierPhone").closest('.form-group').addClass('has-success');	  	
+					}
+
+					if(supplierAddress == "") {
+						$("#editSupplierAddress").after('<p class="text-danger">Supplier Name field is required</p>');
+						$('#editSupplierAddress').closest('.form-group').addClass('has-error');
+					} else {
+						// remov error text field
+						$("#editSupplierAddress").find('.text-danger').remove();
+						// success out for form 
+						$("#editSupplierAddress").closest('.form-group').addClass('has-success');	  	
 					}
 
 					if(supplierStatus == "") {
@@ -156,7 +202,7 @@ function editBrands(supplierId = null) {
 						$("#editSupplierStatus").closest('.form-group').addClass('has-success');	  	
 					}
 
-					if(supplierName && supplierStatus) {
+					if(supplierAddress && supplierAddress && supplierName && supplierStatus) {
 						var form = $(this);
 
 						// submit btn
@@ -175,7 +221,7 @@ function editBrands(supplierId = null) {
 									$('#editSupplierBtn').button('reset');
 
 									// reload the manage member table 
-									manageBrandTable.ajax.reload(null, false);								  	  										
+									manageSupplierTable.ajax.reload(null, false);								  	  										
 									// remove the error text
 									$(".text-danger").remove();
 									// remove the form error
@@ -239,7 +285,7 @@ function removeSupplier(supplierId = null) {
 								$('#removeSupplierMemberModal').modal('hide');
 
 								// reload the brand table 
-								manageBrandTable.ajax.reload(null, false);
+								manageSupplierTable.ajax.reload(null, false);
 								
 								$('.remove-messages').html('<div class="alert alert-success">'+
 			            '<button type="button" class="close" data-dismiss="alert">&times;</button>'+

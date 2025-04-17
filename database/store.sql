@@ -117,8 +117,9 @@ CREATE TABLE `product` (
 CREATE TABLE `supplier` (
   `supplier_id` int(11) NOT NULL,
   `supplier_name` varchar(255) NOT NULL,
-  `rate` varchar(255) NOT NULL,
-  `active` int(11) NOT NULL DEFAULT '0',
+  `supplier_address` varchar(255) NOT NULL,
+  `supplier_active` int(11) NOT NULL DEFAULT '0',
+  `phone_no` varchar(255) NOT NULL,
   `supplier_status` int(11) NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
