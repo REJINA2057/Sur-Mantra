@@ -71,17 +71,26 @@ if ($_GET['o'] == 'add') {
 				</div> <!--/form-group-->
 				<div class="form-group">
 					<label for="clientName" class="col-sm-2 control-label">Client Name</label>
-					<div class="col-sm-10">
-						<input type="text" class="form-control" id="clientName" name="clientName" placeholder="Client Name"
-							autocomplete="off" />
+					<div class="col-sm-8">
+						<select id="clientName" name="clientName" class="form-control">
+							<option value="">~~SELECT~~</option>
+							<?php
+							$clientSql = "SELECT * FROM clients WHERE client_active = 1 AND client_status = 1";
+							$clientData = $connect->query($clientSql);
 
-						<div class="div-action pull pull-right" style="padding-bottom:20px;">
-							<button class="btn btn-default button1" data-toggle="modal" data-target="#addClientForm"> <i
-									class="glyphicon glyphicon-plus-sign"></i> Add New Client </button>
-						</div>
-
+							while ($row = $clientData->fetch_array()) {
+								echo "<option value='" . $row['client_name'] . "'>" . $row['client_name'] . "-" . $row['client_address'] . "</option>";
+							} // /while 
+						
+							?>
+						</select>
+					</div>
+					<div class="div-action" style="padding-bottom:20px;">
+						<button class="btn btn-default button1" data-toggle="modal" data-target="#addClientForm"
+							style=" margin-left:20px;"> <i class="glyphicon glyphicon-plus-sign"></i> Add New Client </button>
 					</div>
 				</div> <!--/form-group-->
+
 				<div class="form-group">
 					<label for="clientContact" class="col-sm-2 control-label">Client Contact</label>
 					<div class="col-sm-10">
@@ -344,13 +353,12 @@ if ($_GET['o'] == 'add') {
 									<th style="width:15%;">Quantity</th>
 									<th style="width:15%;">Total</th>
 									<th style="width:10%;"></th>
-									<th style="width:10%;"></th>
+									<!-- <th style="width:10%;"></th> -->
 
 								</tr>
 							</thead>
 							<tbody>
 							<?php
-
 							$orderItemSql = "SELECT order_item.order_item_id, order_item.order_id, order_item.product_id, order_item.quantity, order_item.rate, order_item.total FROM order_item WHERE order_item.order_id = {$orderId}";
 							$orderItemResult = $connect->query($orderItemSql);
 							// $orderItemData = $orderItemResult->fetch_all();						
@@ -681,7 +689,7 @@ if ($_GET['o'] == 'add') {
 
 
 <script src="custom/js/order.js"></script>
-<script src="custom/js/client.js"></script>
+
 
 <?php require_once 'includes/clientForm.php'; ?>
 <?php require_once 'includes/footer.php'; ?>
