@@ -32,46 +32,48 @@ if ($result && $result->num_rows > 0) {
         // Calculate Retail Price - Rate
         $finalPrice = $retailPrice - $rate;
 
-				$priceColor = $finalPrice < 0 ? "red" : "green";
+        $priceColor = $finalPrice < 0 ? "red" : "green";
 
-				$indicator = $finalPrice < 0 ? "-":"+";
+        $indicator = $finalPrice < 0 ? "-" : "+";
 
         // Payment status formatting
-        if ($row[4] == 1) { 		
+        if ($row[4] == 1) {
             $paymentStatus = "<label class='label label-success'>Full Payment</label>";
-        } elseif ($row[4] == 2) { 		
+        } elseif ($row[4] == 2) {
             $paymentStatus = "<label class='label label-info'>Advance Payment</label>";
-        } else { 		
+        } else {
             $paymentStatus = "<label class='label label-warning'>No Payment</label>";
         }
 
         // Retail Price displayed before the Action Button
-        $retailPriceDisplay = '<p style="margin-bottom:3px; font-size:12px; color:'.$priceColor.';  text-align:right;">'.$indicator.' Rs'.$finalPrice.'</p>';
+        $retailPriceDisplay = '<p style="margin-bottom:3px; font-size:12px; color:' . $priceColor . ';  text-align:right;">' . $indicator . ' Rs' . $finalPrice . '</p>';
 
         // Action buttons
         $button = '
         <div class="btn-group" style="padding:5px;">
-					'.$retailPriceDisplay.'
+					' . $retailPriceDisplay . '
             <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 Action<span class="caret"></span>
             </button>
-            <ul class="dropdown-menu">
-                <li><a href="orders.php?o=editOrd&i='.$orderId.'" id="editOrderModalBtn"> <i class="glyphicon glyphicon-edit"></i> Edit</a></li>
-                <li><a type="button" data-toggle="modal" id="paymentOrderModalBtn" data-target="#paymentOrderModal" onclick="paymentOrder('.$orderId.')"> <i class="glyphicon glyphicon-save"></i> Payment</a></li>
-                <li><a type="button" onclick="printOrder('.$orderId.')"> <i class="glyphicon glyphicon-print"></i> Print </a></li>
-                <li><a type="button" data-toggle="modal" data-target="#removeOrderModal" id="removeOrderModalBtn" onclick="removeOrder('.$orderId.')"> <i class="glyphicon glyphicon-trash"></i> Remove</a></li>       
+            <ul class="dropdown-menu">     
+            <li><a type="button" data-toggle="modal" id="paymentOrderModalBtn" data-target="#paymentOrderModal" onclick="paymentOrder(' . $orderId . ')"> <i class="glyphicon glyphicon-save"></i> Payment</a></li>
+                <li><a type="button" onclick="printOrder(' . $orderId . ')"> <i class="glyphicon glyphicon-print"></i> Print </a></li>
+                <li><a type="button" data-toggle="modal" data-target="#removeOrderModal" id="removeOrderModalBtn" onclick="removeOrder(' . $orderId . ')"> <i class="glyphicon glyphicon-trash"></i> Remove</a></li>
             </ul>
-        </div>';		
+        </div>';
+        // <li><a href="orders.php?o=editOrd&i='.$orderId.'" id="editOrderModalBtn"> <i class="glyphicon glyphicon-edit"></i> Edit</a></li>
 
-        $output['data'][] = array( 		
+
+
+        $output['data'][] = array(
             $x,
             $row[1],  // Order date
             $row[2],  // Client name
             $row[3],  // Client contact
-            $countItem, 
+            $countItem,
             $paymentStatus,
             $button
-        ); 	
+        );
 
         $x++;
     }
