@@ -520,6 +520,9 @@ function addRow() {
         '<td style="padding-left:20px;">' +
         '<div class="form-group">' +
         '<input type="text" name="retailPrice[]" id="retailPrice' +
+        count + 
+        '" autocomplete="off" class="form-control" />' +
+        '<input type="hidden"  name="retailPriceValue[]" id="rateretailPriceValue' +
         count +
         '"autocomplete="off" class="form-control"/>' +
         "</div>" +
@@ -594,6 +597,7 @@ function getProductData(row = null) {
           // setting the rate value into the rate input field
 
           $("#rate" + row).val(response.rate);
+          $("#rateValue" + row).val(response.rate);
           $("#rateValue" + row).val(response.rate);
 
           $("#available_quantity" + row).text(response.quantity);

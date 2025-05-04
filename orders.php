@@ -314,7 +314,7 @@ if ($_GET['o'] == 'add') {
 
 				<?php $orderId = $_GET['i'];
 
-				$sql = "SELECT orders.order_id, orders.order_date, orders.client_name, orders.client_contact, orders.sub_total, orders.vat, orders.total_amount, orders.discount, orders.grand_total, orders.paid, orders.due, orders.payment_type, orders.payment_status,orders.payment_place,orders.gstn FROM orders 	
+				$sql = "SELECT orders.order_id, orders.order_date, orders.client_name, orders.client_contact, orders.sub_total, orders.vat, orders.total_amount, orders.discount, orders.grand_total, orders.paid, orders.due, orders.payment_type, orders.payment_status,orders.payment_place FROM orders 	
 					WHERE orders.order_id = {$orderId}";
 
 				$result = $connect->query($sql);
@@ -346,20 +346,22 @@ if ($_GET['o'] == 'add') {
 						<table class="table" id="productTable">
 							<thead>
 								<tr>
-									<th style="width:40%;">Product</th>
+								<tr>
+									<th style="width:25%;">Product</th>
 									<th style="width:20%;">Rate</th>
 									<th style="width:20%;">Retail Price</th>
-									<th style="width:15%;">Available Quantity</th>
+									<th style="width:10%;">Available Quantity</th>
 									<th style="width:15%;">Quantity</th>
-									<th style="width:15%;">Total</th>
+									<th style="width:25%;">Total</th>
 									<th style="width:10%;"></th>
-									<!-- <th style="width:10%;"></th> -->
+									<th style="width:10%;"></th>
+								</tr>
 
 								</tr>
 							</thead>
 							<tbody>
 							<?php
-							$orderItemSql = "SELECT order_item.order_item_id, order_item.order_id, order_item.product_id, order_item.quantity, order_item.rate, order_item.total FROM order_item WHERE order_item.order_id = {$orderId}";
+							$orderItemSql = "SELECT * FROM order_item WHERE order_item.order_id = {$orderId}";
 							$orderItemResult = $connect->query($orderItemSql);
 							// $orderItemData = $orderItemResult->fetch_all();						
 						
@@ -401,6 +403,14 @@ if ($_GET['o'] == 'add') {
 											<input type="hidden" name="rateValue[]" id="rateValue<?php echo $x; ?>" autocomplete="off"
 												class="form-control" value="<?php echo $orderItemData['rate']; ?>" />
 										</td>
+
+										<td style="padding-left:20px;">
+											<input type="text" name="retailPrice[]" id="retailPrice<?php echo $x; ?>" autocomplete="off"
+												class="form-control" value="<?php echo $orderItemData['retail_price']; ?>" />
+											<input type="hidden" name="retailPriceValue[]" id="retailPriceValue<?php echo $x; ?>" autocomplete="off"
+												class="form-control" value="<?php echo $orderItemData['retail_price']; ?>" />
+										</td>
+
 										<td style="padding-left:20px;">
 											<div class="form-group">
 											<?php
@@ -491,22 +501,13 @@ if ($_GET['o'] == 'add') {
 								</div>
 							</div> <!--/form-group-->
 							<div class="form-group">
-								<label for="vat" class="col-sm-3 control-label gst"><?php if ($data[13] == 2) {
-									echo "IGST 18%";
-								} else
-									echo "GST 18%"; ?></label>
+								<label for="vat" class="col-sm-3 control-label ">VAT 13%</label>
 								<div class="col-sm-9">
 									<input type="text" class="form-control" id="vat" name="vat" disabled="true"
 										value="<?php echo $data[5] ?>" />
 									<input type="hidden" class="form-control" id="vatValue" name="vatValue" value="<?php echo $data[5] ?>" />
 								</div>
 							</div>
-							<div class="form-group">
-								<label for="gstn" class="col-sm-3 control-label gst">G.S.T.IN</label>
-								<div class="col-sm-9">
-									<input type="text" class="form-control" id="gstn" name="gstn" value="<?php echo $data[14] ?>" />
-								</div>
-							</div><!--/form-group-->
 						</div> <!--/col-md-6-->
 
 						<div class="col-md-6">
