@@ -124,6 +124,20 @@ CREATE TABLE `supplier` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
+--
+-- Table structure for table `client`
+--
+
+CREATE TABLE `clients` (
+  `client_Id` int(11) NOT NULL,
+  `client_name` varchar(255) NOT NULL,
+  `client_address` varchar(255) NOT NULL,
+  `client_active` int(11) NOT NULL DEFAULT '0',
+  `client_phone_no` varchar(255) NOT NULL,
+  `client_status` int(11) NOT NULL DEFAULT '0'
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
 
 --
 -- Table structure for table `users`
@@ -158,6 +172,12 @@ ALTER TABLE `brands`
 --
 ALTER TABLE `supplier`
   ADD PRIMARY KEY (`supplier_id`);
+
+ --
+-- Indexes for table `supplier`
+--
+ALTER TABLE `clients`
+  ADD PRIMARY KEY (`client_id`); 
 
 --
 -- Indexes for table `categories`
@@ -204,6 +224,14 @@ ALTER TABLE `brands`
 --
 ALTER TABLE `supplier`
   MODIFY `supplier_id` int(11) NOT NULL AUTO_INCREMENT;  
+
+--
+-- AUTO_INCREMENT for table `supplier`
+--
+ALTER TABLE `clients`
+  MODIFY `client_id` int(11) NOT NULL AUTO_INCREMENT;  
+--
+
 --
 -- AUTO_INCREMENT for table `categories`
 --

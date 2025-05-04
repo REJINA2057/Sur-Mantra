@@ -31,7 +31,7 @@ $(document).ready(function() {
 		}
 
 		if(brandStatus == "") {
-			$("#brandStatus").after('<p class="text-danger">Brand Name field is required</p>');
+			$("#brandStatus").after('<p class="text-danger">Brand Status field is required</p>');
 
 			$('#brandStatus').closest('.form-group').addClass('has-error');
 		} else {
