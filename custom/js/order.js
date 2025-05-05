@@ -432,30 +432,28 @@ function printOrder(orderId = null) {
       data: { orderId: orderId },
       dataType: "text",
       success: function (response) {
-        var mywindow = window.open(
-          "",
-          "Stock Management System",
-          "height=400,width=600"
-        );
-        mywindow.document.write("<html><head><title>Order Invoice</title>");
-        mywindow.document.write("</head><body>");
-        mywindow.document.write(response);
-        mywindow.document.write("</body></html>");
+        // Create a Blob from the response
+        const blob = new Blob([response], { type: "text/html" });
 
-        mywindow.document.close(); // necessary for IE >= 10
-        mywindow.focus(); // necessary for IE >= 10
-        mywindow.resizeTo(screen.width, screen.height);
-        setTimeout(function () {
-          mywindow.print();
-          mywindow.close();
-        }, 1250);
+        // Create a temporary link element
+        const link = document.createElement("a");
+        link.href = URL.createObjectURL(blob);
 
-        //mywindow.print();
-        //mywindow.close();
-      }, // /success function
-    }); // /ajax function to fetch the printable order
-  } // /if orderId
-} // /print order function
+        // Set the download filename
+        link.download = `Order_${orderId}.html`;
+
+        // Trigger the download
+        document.body.appendChild(link);
+        link.click();
+
+        // Cleanup
+        document.body.removeChild(link);
+        URL.revokeObjectURL(link.href);
+      },
+    });
+  }
+}
+
 
 function addRow() {
   $("#addRowBtn").button("loading");
