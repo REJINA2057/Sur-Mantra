@@ -79,7 +79,7 @@ if ($_GET['o'] == 'add') {
 							$clientData = $connect->query($clientSql);
 
 							while ($row = $clientData->fetch_array()) {
-								echo "<option value='" . $row['client_name'] . "'>" . $row['client_name'] . "-" . $row['client_address'] . "</option>";
+								echo "<option value='" . $row['client_id'] . "'>" . $row['client_name'] . "-" . $row['client_address'] . "</option>";
 							} // /while 
 						
 							?>
@@ -94,8 +94,7 @@ if ($_GET['o'] == 'add') {
 				<div class="form-group">
 					<label for="clientContact" class="col-sm-2 control-label">Client Contact</label>
 					<div class="col-sm-10">
-						<input type="text" class="form-control" id="clientContact" name="clientContact" placeholder="Contact Number"
-							autocomplete="off" />
+						<input type="text" class="form-control" id="clientContact" name="clientContact" autocomplete="off" readonly />
 					</div>
 				</div> <!--/form-group-->
 
@@ -690,6 +689,7 @@ if ($_GET['o'] == 'add') {
 
 
 <script src="custom/js/order.js"></script>
+<script src="custom/js/ClientContactAutoPopulate.js"></script>
 
 
 <?php require_once 'includes/clientForm.php'; ?>

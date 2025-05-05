@@ -598,7 +598,6 @@ function getProductData(row = null) {
 
           $("#rate" + row).val(response.rate);
           $("#rateValue" + row).val(response.rate);
-          $("#rateValue" + row).val(response.rate);
 
           $("#available_quantity" + row).text(response.quantity);
 
