@@ -1,5 +1,7 @@
-document.getElementById("clientName").addEventListener("change", function () {
-    const clientId = this.value;
+const selectedValue =document.getElementById("clientName");
+
+selectedValue.addEventListener("change", function () {
+    const [clientId, clientName] = selectedValue.value.split('|');
 
     if (clientId) {
         const xhr = new XMLHttpRequest();

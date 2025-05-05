@@ -79,7 +79,9 @@ if ($_GET['o'] == 'add') {
 							$clientData = $connect->query($clientSql);
 
 							while ($row = $clientData->fetch_array()) {
-								echo "<option value='" . $row['client_id'] . "'>" . $row['client_name'] . "-" . $row['client_address'] . "</option>";
+								$value = $row['client_id'] . "|" . $row['client_name'];
+								$label = $row['client_name'] . " - " . $row['client_address'];
+								echo "<option value='" . $value . "'>" . $label . "</option>";
 							} // /while 
 						
 							?>
