@@ -67,7 +67,6 @@ CREATE TABLE `orders` (
   `payment_type` int(11) NOT NULL,
   `payment_status` int(11) NOT NULL,
   `payment_place` int(11) NOT NULL,
-  `gstn` varchar(255) NOT NULL,
   `order_status` int(11) NOT NULL DEFAULT '0',
   `user_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;

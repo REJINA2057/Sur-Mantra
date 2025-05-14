@@ -274,6 +274,25 @@
 								</div> <!-- /form-group-->
 
 								<div class="form-group">
+									<label for="editSupplierName" class="col-sm-3 control-label">Supplier Name: </label>
+									<label class="col-sm-1 control-label">: </label>
+									<div class="col-sm-8">
+										<select class="form-control" id="editSupplierName" name="editSupplierName">
+											<option value="">~~SELECT~~</option>
+											<?php
+											$sql = "SELECT supplier_id, supplier_name,supplier_active,supplier_status,supplier_address FROM supplier WHERE supplier_status = 1 AND supplier_active = 1";
+											$result = $connect->query($sql);
+
+											while ($row = $result->fetch_array()) {
+												echo "<option value='" . $row[0] . "'>" . $row[1] . " - " . $row[4] . "</option>";
+											} // while
+											
+											?>
+										</select>
+									</div>
+								</div>
+
+								<div class="form-group">
 									<label for="editQuantity" class="col-sm-3 control-label">Quantity: </label>
 									<label class="col-sm-1 control-label">: </label>
 									<div class="col-sm-8">
@@ -290,6 +309,8 @@
 											autocomplete="off">
 									</div>
 								</div> <!-- /form-group-->
+
+
 
 								<div class="form-group">
 									<label for="editBrandName" class="col-sm-3 control-label">Brand Name: </label>
