@@ -32,7 +32,11 @@ $(document).ready(function () {
         $(".text-danger").remove();
 
         var orderDate = $("#orderDate").val();
-        var clientName = $("#clientName").val();
+
+        var clientNameAndId = $("#clientName").val().split("|");
+        var clientId = clientNameAndId[0];       
+        var clientName = clientNameAndId[1];
+
         var clientContact = $("#clientContact").val();
         var paid = $("#paid").val();
         var discount = $("#discount").val();
@@ -239,7 +243,11 @@ $(document).ready(function () {
         $(".text-danger").remove();
 
         var orderDate = $("#orderDate").val();
-        var clientName = $("#clientName").val();
+        
+        var clientNameAndId = $("#clientName").val().split("|");
+        var clientId = clientNameAndId[0];       
+        var clientName = clientNameAndId[1];
+
         var clientContact = $("#clientContact").val();
         var paid = $("#paid").val();
         var discount = $("#discount").val();
