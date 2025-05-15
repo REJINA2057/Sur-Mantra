@@ -146,24 +146,7 @@
 <!-- /edit brand -->
 
 <!-- remove brand -->
-<div class="modal fade" tabindex="-1" role="dialog" id="removeMemberModal">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title"><i class="glyphicon glyphicon-trash"></i> Remove Brand</h4>
-      </div>
-      <div class="modal-body">
-        <p>Do you really want to remove ?</p>
-      </div>
-      <div class="modal-footer removeBrandFooter">
-        <button type="button" class="btn btn-default" data-dismiss="modal"> <i class="glyphicon glyphicon-remove-sign"></i> Close</button>
-        <button type="button" class="btn btn-primary" id="removeBrandBtn" data-loading-text="Loading..."> <i class="glyphicon glyphicon-ok-sign"></i> Save changes</button>
-      </div>
-    </div><!-- /.modal-content -->
-  </div><!-- /.modal-dialog -->
-</div><!-- /.modal -->
-<!-- /remove brand -->
+
 
 <script src="custom/js/brand.js"></script>
 
