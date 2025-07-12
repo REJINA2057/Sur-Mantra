@@ -23,11 +23,10 @@ if ($_POST) {
 	$paymentType = $_POST['paymentType'];
 	$paymentStatus = $_POST['paymentStatus'];
 	$paymentPlace = $_POST['paymentPlace'];
-	$gstn = $_POST['gstn'];
 	$userid = $_SESSION['userId'];
 
 
-	$sql = "INSERT INTO orders (order_date, client_name, client_contact, sub_total, vat, total_amount, discount, grand_total, paid, due, payment_type, payment_status,payment_place, gstn,order_status,user_id) VALUES ('$orderDate', '$clientName', '$clientContact', '$subTotalValue', '$vatValue', '$totalAmountValue', '$discount', '$grandTotalValue', '$paid', '$dueValue', $paymentType, $paymentStatus,$paymentPlace,$gstn, 1,$userid)";
+	$sql = "INSERT INTO orders (order_date, client_name, client_contact, sub_total, vat, total_amount, discount, grand_total, paid, due, payment_type, payment_status,payment_place,order_status,user_id) VALUES ('$orderDate', '$clientName', '$clientContact', '$subTotalValue', '$vatValue', '$totalAmountValue', '$discount', '$grandTotalValue', '$paid', '$dueValue', $paymentType, $paymentStatus,$paymentPlace, 1,$userid)";
 
 	$order_id;
 	$orderStatus = false;

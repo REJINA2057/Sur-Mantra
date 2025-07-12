@@ -328,14 +328,35 @@ if ($_GET['o'] == 'add') {
 								<input type="text" class="form-control" id="orderDate" name="orderDate" autocomplete="off"
 									value="<?php echo $data[1] ?>" />
 							</div>
-						</div> <!--/form-group-->
+						</div>
+
 						<div class="form-group">
 							<label for="clientName" class="col-sm-2 control-label">Client Name</label>
-							<div class="col-sm-10">
-								<input type="text" class="form-control" id="clientName" name="clientName" placeholder="Client Name"
-									autocomplete="off" value="<?php echo $data[2] ?>" />
+							<div class="col-sm-8">
+								<select id="clientName" name="clientName" class="form-control">
+									<option value="">~~SELECT~~</option>
+								<?php
+								$selected = $data[2];
+								$clientSql = "SELECT * FROM clients WHERE client_active = 1 AND client_status = 1";
+								$clientData = $connect->query($clientSql);
+
+								while ($row = $clientData->fetch_array()) {
+									$isSelected = ($selected == $row['client_name']) ? "selected" : "";
+									$value = $row['client_id'] . "|" . $row['client_name'];
+									$label = $row['client_name'] . " - " . $row['client_address'];
+									echo "<option value='" . $value . "'" . $isSelected . ">" . $label . "</option>";
+
+								} // /while 
+							
+								?>
+								</select>
 							</div>
-						</div> <!--/form-group-->
+							<div class="div-action" style="padding-bottom:20px;">
+								<button class="btn btn-default button1" data-toggle="modal" data-target="#addClientForm"
+									style=" margin-left:20px;"> <i class="glyphicon glyphicon-plus-sign"></i> Add New Client </button>
+							</div>
+						</div>
+
 						<div class="form-group">
 							<label for="clientContact" class="col-sm-2 control-label">Client Contact</label>
 							<div class="col-sm-10">
@@ -425,8 +446,6 @@ if ($_GET['o'] == 'add') {
 												} else {
 													$selected = "";
 												}
-
-												//echo "<option value='".$row['product_id']."' id='changeProduct".$row['product_id']."' ".$selected." >".$row['product_name']."</option>";
 											} // /while 
 									
 											?>
@@ -447,7 +466,6 @@ if ($_GET['o'] == 'add') {
 												class="form-control" value="<?php echo $orderItemData['total']; ?>" />
 										</td>
 										<td>
-
 											<button class="btn btn-default removeProductRowBtn" type="button" id="removeProductRowBtn"
 												onclick="removeProductRow(<?php echo $x; ?>)"><i class="glyphicon glyphicon-trash"></i></button>
 										</td>
@@ -649,7 +667,7 @@ if ($_GET['o'] == 'add') {
 							<option value="4">On Credit</option>
 						</select>
 					</div>
-				</div> /form-group
+				</div>
 
 			</div> <!--/modal-body-->
 			<div class="modal-footer">
@@ -692,6 +710,7 @@ if ($_GET['o'] == 'add') {
 
 <script src="custom/js/order.js"></script>
 <script src="custom/js/ClientContactAutoPopulate.js"></script>
+
 
 
 <?php require_once 'includes/clientForm.php'; ?>
